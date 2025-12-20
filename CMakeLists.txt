@@ -3,10 +3,11 @@ cmake_policy(SET CMP0077 NEW)
 
 project(hv VERSION 1.3.4)
 
-option(BUILD_SHARED "build shared library" ON)
+option(BUILD_SHARED "build shared library" OFF)
 option(BUILD_STATIC "build static library" ON)
 
 option(BUILD_EXAMPLES "build examples" ON)
+option(BUILD_MYDEMO "build mydemo" ON)
 option(BUILD_UNITTEST "build unittest" OFF)
 
 # see config.ini
@@ -295,6 +296,11 @@ if(BUILD_EXAMPLES)
     file(INSTALL etc DESTINATION ${CMAKE_BINARY_DIR})
     file(INSTALL etc DESTINATION ${CMAKE_BINARY_DIR}/bin)
     file(INSTALL etc DESTINATION ${CMAKE_BINARY_DIR}/examples)
+endif()
+
+# CAOL
+if(BUILD_MYDEMO)
+    add_subdirectory(mydemo)
 endif()
 
 if(BUILD_UNITTEST)
