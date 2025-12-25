@@ -359,6 +359,7 @@ static int i2a(int i, char* buf, int len) {
 }
 
 int logger_print(logger_t* logger, int level, const char* fmt, ...) {
+    return 0;
     if (level < logger->level)
         return -10;
 

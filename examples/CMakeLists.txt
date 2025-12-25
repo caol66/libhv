@@ -87,6 +87,20 @@ if(WITH_EVPP)
     # hmain_test
     add_executable(hmain_test hmain_test.cpp)
     target_link_libraries(hmain_test ${HV_LIBRARIES})
+	
+	add_executable(UdpServer_test ../evpp/UdpServer_test.cpp)
+    target_link_libraries(UdpServer_test ${HV_LIBRARIES})
+	
+	add_executable(UdpClient_test ../evpp/UdpClient_test.cpp)
+    target_link_libraries(UdpClient_test ${HV_LIBRARIES})
+	
+	add_executable(TcpClient_test ../evpp/TcpClient_test.cpp)
+    target_link_libraries(TcpClient_test ${HV_LIBRARIES})
+	
+		#mydemo
+	list(APPEND MYLIBS "ws2_32" "user32")
+	add_executable(caol_demo ../evpp/caol_demo.cpp)
+    target_link_libraries(caol_demo ${MYLIBS})
 
     # nmap
     glob_headers_and_sources(NMAP_FILES nmap)
@@ -94,7 +108,7 @@ if(WITH_EVPP)
     target_compile_definitions(nmap PRIVATE PRINT_DEBUG)
     target_link_libraries(nmap ${HV_LIBRARIES})
 
-    list(APPEND EXAMPLES hmain_test nmap)
+    list(APPEND EXAMPLES hmain_test UdpServer_test UdpClient_test TcpClient_test nmap)
 if(WITH_HTTP)
     include_directories(../http)
 
